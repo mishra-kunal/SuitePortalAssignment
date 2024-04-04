@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HomeComponent } from './home.component';
+import { AdminComponent } from './admin.component';
 import { SharedModule } from '../shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule
   ],
-  declarations: [HomeComponent],
-  exports: [HomeComponent]
+  declarations: [AdminComponent],
+  exports: [AdminComponent]
 })
-export class HomeModule { }
+export class AdminModule { }

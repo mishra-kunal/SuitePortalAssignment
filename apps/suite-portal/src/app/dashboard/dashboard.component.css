@@ -1,0 +1,25 @@
+.full-page-table {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .mat-card {
+    margin: 20px; 
+    flex-grow: 1;
+  }
+  
+  .table-container {
+    overflow-x: auto; 
+  }
+  
+  .full-width-table {
+    width: 100%; 
+  }
+  
+  .mat-h2 {
+    font-size: 24px; 
+    margin: 0;
+    padding: 20px 0; 
+  }
