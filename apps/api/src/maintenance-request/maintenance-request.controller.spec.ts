@@ -33,4 +33,25 @@ describe('MaintenanceRequestController', () => {
     expect(mockService.getMaintenanceRequest).toHaveBeenCalled();
     expect(result).toEqual({ id: '1', summary: 'test'});
   });
+
+  it('should call dao when closing a maintenance request', async () => {
+    mockService.closeMaintenanceRequest = jest.fn().mockResolvedValue({ id: '1', summary: 'test' });
+
+    const result = await controller.closeMaintenanceRequest('1');
+
+    expect(mockService.closeMaintenanceRequest).toHaveBeenCalled();
+    expect(result).toEqual({ id: '1', summary: 'test'});
+  });
+
+
+  it('should call dao when listing all maintenance requests', async () => {
+    mockService.listAllRequests = jest.fn().mockResolvedValue([{ id: '1', summary: 'test' }, { id: '2', summary: 'test22' }]);
+
+    const result = await controller.listAllRequests();
+
+    expect(mockService.listAllRequests).toHaveBeenCalled();
+    expect(result).toEqual([{ id: '1', summary: 'test' }, { id: '2', summary: 'test22' }]);
+  });
+
+
 });
