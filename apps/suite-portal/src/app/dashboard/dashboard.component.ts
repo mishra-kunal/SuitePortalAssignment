@@ -58,4 +58,11 @@ export class DashboardComponent implements OnInit {
       error: (error) => alert(`Failed to close request: ${error}`),
     });
   }
+
+  logout() {
+    console.log('Logging out');
+    localStorage.clear();
+    // Redirect to the login page
+    window.location.href = '/home';
+  }
 }

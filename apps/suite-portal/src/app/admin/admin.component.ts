@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 export class AdminComponent implements OnInit {
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private apiService: ApiService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     if (this.apiService.isAuthenticated()) {
@@ -28,11 +32,15 @@ export class AdminComponent implements OnInit {
       this.apiService.login(this.loginForm.value).subscribe({
         next: (response: any) => {
           const { token, user } = response;
-          localStorage.setItem('token', token);
-          localStorage.setItem('user', JSON.stringify(user));
-          console.log('Login successful', user);
-          // Redirect to the admin dashboard
-          this.router.navigate(['dashboard']);
+          if (!response.error) {
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
+            console.log('Login successful', user);
+            // Redirect to the admin dashboard
+            this.router.navigate(['dashboard']);
+          } else {
+            alert(`Login failed: ${response.error}`);
+          }
         },
         error: (error) => alert(`Login failed: ${error}`),
       });
